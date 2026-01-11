@@ -84,58 +84,70 @@
 
 <body>
 
-  <nav class="fixed w-full z-50 glass">
-    <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-        <div class="text-2xl font-extrabold gradient-text tracking-tighter italic underline decoration-blue-500">
-            ALBARA.DEV
+    <!-- <nav class="fixed w-full z-50 glass">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="text-2xl font-extrabold gradient-text tracking-tighter italic underline decoration-blue-500">
+                ALBARA.DEV</div>
+            <div class="hidden md:flex gap-8 text-sm font-bold">
+                <a href="#home" class="hover:text-blue-400 transition">الرئيسية</a>
+                <a href="#projects" class="hover:text-blue-400 transition">المشاريع</a>
+                <a href="#tech" class="hover:text-blue-400 transition">التقنيات</a>
+                <a href="#work" class="hover:text-blue-400 transition">العمل</a>
+            </div>
+        </div>
+    </nav> -->
+    <nav class="fixed w-full z-50 glass">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="text-2xl font-extrabold gradient-text tracking-tighter italic underline decoration-blue-500">
+                ALBARA.DEV
+            </div>
+
+            <div class="hidden md:flex gap-8 text-sm font-bold">
+                <a href="#home" class="hover:text-blue-400 transition">الرئيسية</a>
+                <a href="#projects" class="hover:text-blue-400 transition">المشاريع</a>
+                <a href="#tech" class="hover:text-blue-400 transition">التقنيات</a>
+                <a href="#work" class="hover:text-blue-400 transition">العمل</a>
+            </div>
+
+            <button id="menu-btn" class="md:hidden text-white focus:outline-none">
+                <i class="fas fa-bars text-2xl"></i>
+            </button>
         </div>
 
-        <div class="hidden md:flex gap-8 text-sm font-bold">
-            <a href="#home" class="hover:text-blue-400 transition">الرئيسية</a>
-            <a href="#projects" class="hover:text-blue-400 transition">المشاريع</a>
-            <a href="#tech" class="hover:text-blue-400 transition">التقنيات</a>
-            <a href="#work" class="hover:text-blue-400 transition">العمل</a>
+        <div id="mobile-menu"
+            class="hidden md:hidden glass border-t border-white/10 flex flex-col gap-4 p-6 text-center font-bold">
+            <a href="#home" class="hover:text-blue-400 transition py-2 border-b border-white/5">الرئيسية</a>
+            <a href="#projects" class="hover:text-blue-400 transition py-2 border-b border-white/5">المشاريع</a>
+            <a href="#tech" class="hover:text-blue-400 transition py-2 border-b border-white/5">التقنيات</a>
+            <a href="#work" class="hover:text-blue-400 transition py-2">العمل</a>
         </div>
+    </nav>
 
-        <button id="menu-btn" class="md:hidden text-white focus:outline-none">
-            <i class="fas fa-bars text-2xl"></i>
-        </button>
-    </div>
+    <script>
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
 
-    <div id="mobile-menu" class="hidden md:hidden glass border-t border-white/10 flex flex-col gap-4 p-6 text-center font-bold">
-        <a href="#home" class="hover:text-blue-400 transition py-2 border-b border-white/5">الرئيسية</a>
-        <a href="#projects" class="hover:text-blue-400 transition py-2 border-b border-white/5">المشاريع</a>
-        <a href="#tech" class="hover:text-blue-400 transition py-2 border-b border-white/5">التقنيات</a>
-        <a href="#work" class="hover:text-blue-400 transition py-2">العمل</a>
-    </div>
-</nav>
+        menuBtn.addEventListener('click', () => {
+            // تبديل ظهور القائمة
+            mobileMenu.classList.toggle('hidden');
 
-<script>
-    const menuBtn = document.getElementById('menu-btn');
-    const mobileMenu = document.getElementById('mobile-menu');
-
-    menuBtn.addEventListener('click', () => {
-        // تبديل ظهور القائمة
-        mobileMenu.classList.toggle('hidden');
-        
-        // تغيير أيقونة الزر من (قائمة) إلى (X) عند الفتح
-        const icon = menuBtn.querySelector('i');
-        icon.classList.toggle('fa-bars');
-        icon.classList.toggle('fa-times');
-    });
-
-    // إغلاق القائمة عند الضغط على أي رابط
-    const navLinks = mobileMenu.querySelectorAll('a');
-    navLinks.forEach(link => {
-        link.addEventListener('click', () => {
-            mobileMenu.classList.add('hidden');
+            // تغيير أيقونة الزر من (قائمة) إلى (X) عند الفتح
             const icon = menuBtn.querySelector('i');
-            icon.classList.add('fa-bars');
-            icon.classList.remove('fa-times');
+            icon.classList.toggle('fa-bars');
+            icon.classList.toggle('fa-times');
         });
-    });
-</script>
 
+        // إغلاق القائمة عند الضغط على أي رابط
+        const navLinks = mobileMenu.querySelectorAll('a');
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+                const icon = menuBtn.querySelector('i');
+                icon.classList.add('fa-bars');
+                icon.classList.remove('fa-times');
+            });
+        });
+    </script>
 
 
     <section id="home"
@@ -222,7 +234,7 @@
                             target="_blank"><i class="fas fa-university"></i> Bank Extension</a></li>
                     <li><a href="https://github.com/Albarafahed/MyProjects/tree/master/c%2B%2B/OOB/Banke/BankProject"
                             target="_blank"><i class="fas fa-cube"></i> Bank OOP</a></li>
-                    <li><a href="https://github.com/Albarafahed/Course-13-Abu-Hadhoud-C-project-by-Data-Structurs-/blob/master/Undo%20and%20Redo/FileName.cppp"
+                    <li><a href="https://github.com/Albarafahed/Course-13-Abu-Hadhoud-C-project-by-Data-Structurs-/blob/master/Undo%20and%20Redo/FileName.cpp"
                             target="_blank"><i class="fas fa-history"></i> Undo & Redo (Data Structures)</a></li>
                 </ul>
             </div>
@@ -239,14 +251,14 @@
                 <div class="mb-4">
                     <span class="badge badge-frontend mb-2 inline-block">Front End Projects</span>
                     <ul class="project-list text-red-400/80 font-medium">
-                        <li><a href="https://github.com/Albarafahed/MyProjects/tree/master/Wnidows%20Form%20C%23/Front%20End/Calculator"
+                        <li><a href="https://github.com/Albarafahed/MyProjects/blob/master/Wnidows%20Form%20C%23/Front%20End/Calculator/Calculators/Form1.cs"
                                 target="_blank"><i class="fas fa-calculator"></i> Calculator</a></li>
                         <li><a href="https://github.com/Albarafahed/MyProjects/tree/master/Wnidows%20Form%20C%23/Front%20End/NoteBook"
                                 target="_blank"><i class="fas fa-sticky-note"></i> Note Book</a></li>
                         <li><a href="https://github.com/Albarafahed/MyProjects/tree/master/Wnidows%20Form%20C%23/Front%20End/Pizza/Pizza"
-                                target="_blank"><i class="fas fa-pizza-slice"></i> Pizza App</a></li>
+                                target="_blank"><i class="fas fa-pizza-slice"></i> Pizza </a></li>
                         <li><a href="https://github.com/Albarafahed/MyProjects/tree/master/Wnidows%20Form%20C%23/Front%20End/snake/Pizza"
-                                target="_blank"><i class="fas fa-dragon"></i> Snake Game</a></li>
+                                target="_blank"><i class="fas fa-dragon"></i> Snake </a></li>
                         <li><a href="https://github.com/Albarafahed/MyProjects/blob/master/Wnidows%20Form%20C%23/Front%20End/XO-Game/XO-Game/XO-Game-Final/Form1.cs"
                                 target="_blank"><i class="fas fa-times"></i> X-O Game</a></li>
                     </ul>
@@ -397,6 +409,4 @@
 
 </body>
 
-
 </html>
-
