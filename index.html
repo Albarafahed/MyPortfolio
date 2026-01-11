@@ -84,18 +84,57 @@
 
 <body>
 
-    <nav class="fixed w-full z-50 glass">
-        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-            <div class="text-2xl font-extrabold gradient-text tracking-tighter italic underline decoration-blue-500">
-                ALBARA.DEV</div>
-            <div class="hidden md:flex gap-8 text-sm font-bold">
-                <a href="#home" class="hover:text-blue-400 transition">الرئيسية</a>
-                <a href="#projects" class="hover:text-blue-400 transition">المشاريع</a>
-                <a href="#tech" class="hover:text-blue-400 transition">التقنيات</a>
-                <a href="#work" class="hover:text-blue-400 transition">العمل</a>
-            </div>
+  <nav class="fixed w-full z-50 glass">
+    <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+        <div class="text-2xl font-extrabold gradient-text tracking-tighter italic underline decoration-blue-500">
+            ALBARA.DEV
         </div>
-    </nav>
+
+        <div class="hidden md:flex gap-8 text-sm font-bold">
+            <a href="#home" class="hover:text-blue-400 transition">الرئيسية</a>
+            <a href="#projects" class="hover:text-blue-400 transition">المشاريع</a>
+            <a href="#tech" class="hover:text-blue-400 transition">التقنيات</a>
+            <a href="#work" class="hover:text-blue-400 transition">العمل</a>
+        </div>
+
+        <button id="menu-btn" class="md:hidden text-white focus:outline-none">
+            <i class="fas fa-bars text-2xl"></i>
+        </button>
+    </div>
+
+    <div id="mobile-menu" class="hidden md:hidden glass border-t border-white/10 flex flex-col gap-4 p-6 text-center font-bold">
+        <a href="#home" class="hover:text-blue-400 transition py-2 border-b border-white/5">الرئيسية</a>
+        <a href="#projects" class="hover:text-blue-400 transition py-2 border-b border-white/5">المشاريع</a>
+        <a href="#tech" class="hover:text-blue-400 transition py-2 border-b border-white/5">التقنيات</a>
+        <a href="#work" class="hover:text-blue-400 transition py-2">العمل</a>
+    </div>
+</nav>
+
+<script>
+    const menuBtn = document.getElementById('menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+
+    menuBtn.addEventListener('click', () => {
+        // تبديل ظهور القائمة
+        mobileMenu.classList.toggle('hidden');
+        
+        // تغيير أيقونة الزر من (قائمة) إلى (X) عند الفتح
+        const icon = menuBtn.querySelector('i');
+        icon.classList.toggle('fa-bars');
+        icon.classList.toggle('fa-times');
+    });
+
+    // إغلاق القائمة عند الضغط على أي رابط
+    const navLinks = mobileMenu.querySelectorAll('a');
+    navLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            mobileMenu.classList.add('hidden');
+            const icon = menuBtn.querySelector('i');
+            icon.classList.add('fa-bars');
+            icon.classList.remove('fa-times');
+        });
+    });
+</script>
 
 
 
@@ -357,5 +396,6 @@
     </footer>
 
 </body>
+
 
 </html>
